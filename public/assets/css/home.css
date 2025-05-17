@@ -1,0 +1,31 @@
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.shadow-hover {
+    transition: all 0.3s ease;
+}
+
+.shadow-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.testimonial-card {
+    background: #fff;
+    border-radius: 15px;
+    max-width: 600px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.counter h2 {
+    transition: all 0.5s ease;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+}

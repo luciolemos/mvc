@@ -1,0 +1,14 @@
+/* Estiliza a div wrapper do reCAPTCHA */
+.recaptcha-wrapper {
+    transform: scale(1);
+    transform-origin: 0 0;
+}
+
+/* 🔎 Em telas menores, reduz um pouco o scale */
+@media (max-width: 400px) {
+    .recaptcha-wrapper {
+        transform: scale(0.93);
+        transform-origin: 0 0;
+    }
+}
+

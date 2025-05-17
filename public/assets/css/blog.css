@@ -1,0 +1,37 @@
+/* blog.css */
+.blog-post-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+.blog-post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.blog-post-card .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.blog-post-card .btn-outline-primary {
+    border-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.blog-post-card .btn-outline-primary:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .blog-post-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .blog-post-card .card-img-top {
+        height: 150px;
+    }
+}

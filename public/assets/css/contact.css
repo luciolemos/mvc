@@ -1,0 +1,92 @@
+/* contact.css */
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 0;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+}
+
+.contact-section {
+    --input-focus-border: #3498db;
+    --input-focus-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+    --card-hover-transform: translateY(-5px) rotateX(1deg) rotateY(1deg);
+}
+
+.form-floating label {
+    transition: all 0.3s ease;
+    color: #6c757d;
+}
+
+.form-control:focus {
+    border-color: var(--input-focus-border);
+    box-shadow: var(--input-focus-shadow);
+}
+
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
+    transform: scale(0.85) translateY(-1.5rem) translateX(0.15rem);
+    opacity: 0.8;
+}
+
+#message {
+    resize: none;
+    min-height: 150px;
+}
+
+.btn-send {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-send:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-send::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+            to right,
+            rgba(255,255,255,0) 20%,
+            rgba(255,255,255,0.1) 50%,
+            rgba(255,255,255,0) 80%
+    );
+    transform: rotate(45deg);
+    animation: sendShine 1.5s ease-out;
+}
+
+@keyframes sendShine {
+    from { transform: translateX(-100%) rotate(45deg); }
+    to { transform: translateX(200%) rotate(45deg); }
+}
+
+.list-unstyled li {
+    transition: transform 0.3s ease;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.list-unstyled li:hover {
+    transform: translateX(10px);
+    background: rgba(52, 152, 219, 0.05);
+}
+
+@media (max-width: 768px) {
+    .hero-section img {
+        max-width: 200px !important;
+    }
+
+    .list-unstyled li {
+        padding: 0.5rem;
+    }
+}

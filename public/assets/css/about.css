@@ -1,0 +1,215 @@
+/* about.css - Folha de Estilo Aprimorada */
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    position: relative;
+    overflow: hidden;
+    padding: 8rem 0;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-section .row {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-section img {
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+    transition: transform 0.5s ease;
+}
+
+.hero-section img:hover {
+    transform: rotate(-5deg) scale(1.05);
+}
+
+/* Cards do Time */
+.col-md-6.col-lg-4 {
+    perspective: 1000px;
+}
+
+.card-body {
+    background: white;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-base);
+    position: relative;
+    overflow: hidden;
+    min-height: 400px;
+    transform-style: preserve-3d;
+}
+
+.card-body::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+            to right,
+            rgba(255,255,255,0) 20%,
+            rgba(255,255,255,0.1) 50%,
+            rgba(255,255,255,0) 80%
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.card-body:hover {
+    transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.card-body:hover::before {
+    opacity: 1;
+    top: 150%;
+    left: 150%;
+}
+
+.text-primary {
+    color: var(--secondary-color) !important;
+    position: relative;
+}
+
+.text-primary::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.card-body:hover .text-primary::after {
+    width: 100px;
+}
+
+/* Social Links */
+.social-links {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+    --icon-size: 45px;
+    position: relative;
+    z-index: 2;
+}
+
+.social-links .btn {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.social-links .btn i {
+    transition: transform 0.3s ease;
+}
+
+.social-links .btn:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.social-links .btn:hover i {
+    transform: scale(1.2) translateY(-2px);
+}
+
+/* Efeito de Brilho Dinâmico */
+@keyframes socialShine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(200%) rotate(45deg); }
+}
+
+.social-links .btn:hover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+            45deg,
+            rgba(255,255,255,0.1) 10%,
+            rgba(255,255,255,0.3) 50%,
+            rgba(255,255,255,0.1) 90%
+    );
+    animation: socialShine 1.5s ease-out;
+}
+
+/* Seção de Vídeo */
+.shadow-hover {
+    transition: var(--transition-base);
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+}
+
+.shadow-hover:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.ratio-16x9 iframe {
+    transition: transform 0.3s ease;
+}
+
+.ratio-16x9:hover iframe {
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .hero-section {
+        padding: 4rem 0;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+    }
+
+    .card-body {
+        min-height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        min-height: auto;
+    }
+
+    .card-body:hover {
+        transform: translateY(-5px);
+    }
+
+    .hero-section img {
+        max-width: 200px !important;
+    }
+}
+
+/* Animações de Entrada */
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.col-md-6.col-lg-4 {
+    animation: cardEntrance 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+/* Delay para animação em cascata */
+.col-md-6.col-lg-4:nth-child(1) { animation-delay: 0.2s; }
+.col-md-6.col-lg-4:nth-child(2) { animation-delay: 0.4s; }
+.col-md-6.col-lg-4:nth-child(3) { animation-delay: 0.6s; }

@@ -1,0 +1,34 @@
+<?php
+use App\Helpers\SystemVersions;
+$versions = SystemVersions::get();
+?>
+
+<!-- Cabeçalho com <html>, <head> e <body> -->
+<?php require __DIR__ . '/header.php'; ?>
+
+<!-- 📄 Conteúdo principal da página -->
+<main class="flex-fill py-4">
+    <div class="container">
+        <?php
+        if (isset($GLOBALS['view'])) {
+            $path = '../app/Views/' . $GLOBALS['view'] . '.php';
+            if (file_exists($path)) {
+                require $path;
+            } else {
+                echo "<div class='alert alert-danger'>Erro: view <code>$path</code> não encontrada.</div>";
+            }
+        }
+        ?>
+
+        <!-- Rodapé com badges -->
+        <div class="text-center text-muted mt-5 small py-3 border-top" data-aos="fade-in">
+            <div class="mb-1">
+                <img src="https://img.shields.io/badge/deploy-production-brightgreen" alt="Deploy OK" class="me-2">
+                <img src="https://img.shields.io/uptimerobot/status/m790498088-c8793f75e4fa5243f7e0840e" alt="Uptime">
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Scripts e rodapé -->
+<?php require __DIR__ . '/footer.php'; ?>
