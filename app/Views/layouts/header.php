@@ -55,7 +55,6 @@ $subRoute  = $segments[1] ?? null;
                        BLOG
                     </a>
                 </li>
-
                 <li class="nav-item">
                     <a class="nav-link <?= $mainRoute === 'contact' ? 'active border-bottom border-2 pb-1' : '' ?>" href="<?= BASE_URL ?>contact">
                     CONTATO
@@ -128,4 +127,3 @@ $subRoute  = $segments[1] ?? null;
         </div>
     </div>
 </nav>
-

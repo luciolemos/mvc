@@ -30,3 +30,26 @@
 
 </div>
 
+<!-- 💬 Comentários Giscus -->
+<div class="mt-5" data-aos="fade-up">
+    <h5 class="text-primary mb-3"><i class="bi bi-chat-dots-fill me-2"></i>Comentários</h5>
+    <div id="giscus-container" class="bg-light p-3 rounded shadow-sm">
+        <script src="https://giscus.app/client.js"
+                data-repo="luciolemos/mvc"
+                data-repo-id="R_kgDOOrqc9g"
+                data-category="Show and tell"
+                data-category-id="DIC_kwDOOrqc9s4CqRCQ"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="light"
+                data-lang="pt"
+                crossorigin="anonymous"
+                async>
+        </script>
+    </div>
+</div>
+
+

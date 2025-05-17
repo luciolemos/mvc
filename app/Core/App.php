@@ -18,6 +18,16 @@ class App {
     public function __construct() {
         $url = Router::parseUrl();
 
+        // 🔁 Redirecionamento específico para painel de posts
+        if ($url[0] === 'admin' && isset($url[1]) && $url[1] === 'posts') {
+            $this->controller = new \App\Controllers\PostAdminController();
+            $this->method = $url[2] ?? 'index';
+            $this->params = array_slice($url, 3);
+            call_user_func_array([$this->controller, $this->method], $this->params);
+            return;
+        }
+
+
         $controllerName = ucfirst($url[0] ?? 'home') . 'Controller';
         $controllerPath = "\\App\\Controllers\\$controllerName";
 

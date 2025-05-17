@@ -65,6 +65,12 @@ try {
                         <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalConexao">
                             <i class="bi bi-plug me-1"></i> Testar Conexão
                         </button>
+
+                        <a href="<?= BASE_URL ?>admin/posts" class="btn btn-outline-primary w-100 mb-2">
+                            <i class="bi bi-journal-richtext me-1"></i> Gerenciar Posts
+                        </a>
+
+
                         <a href="<?= BASE_URL ?>coverage/html/index.html" target="_blank" class="btn btn-outline-success">
                             <i class="bi bi-bar-chart-line me-1"></i> Ver Cobertura de Testes
                         </a>

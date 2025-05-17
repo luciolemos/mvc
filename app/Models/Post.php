@@ -22,4 +22,33 @@ class Post {
         $stmt->execute([$slug]);
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
+    public function encontrarPorId($id) {
+        $stmt = $this->db->prepare("SELECT * FROM posts WHERE id = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function criar($titulo, $slug, $conteudo, $autor) {
+        $stmt = $this->db->prepare("INSERT INTO posts (titulo, slug, conteudo, autor) VALUES (?, ?, ?, ?)");
+        $stmt->execute([$titulo, $slug, $conteudo, $autor]);
+    }
+
+    public function atualizar($id, $titulo, $slug, $conteudo) {
+        $stmt = $this->db->prepare("UPDATE posts SET titulo = ?, slug = ?, conteudo = ? WHERE id = ?");
+        $stmt->execute([$titulo, $slug, $conteudo, $id]);
+    }
+
+    public function excluir($id) {
+        $stmt = $this->db->prepare("DELETE FROM posts WHERE id = ?");
+        $stmt->execute([$id]);
+    }
+
+    public function buscarPorTitulo($termo) {
+        $stmt = $this->db->prepare("SELECT * FROM posts WHERE titulo LIKE ? ORDER BY criado_em DESC");
+        $stmt->execute(['%' . $termo . '%']);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+
 }
