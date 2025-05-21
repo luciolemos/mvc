@@ -128,19 +128,19 @@
     </div>
 
     <!-- NAVEGAÇÃO -->
-    <div class="text-center mt-4" data-aos="fade-up">
-        <a href="<?= BASE_URL ?>about" class="btn btn-outline-primary me-2 mb-2">
+<!--    <div class="text-center mt-4" data-aos="fade-up">
+        <a href="<?/*= BASE_URL */?>about" class="btn btn-outline-primary me-2 mb-2">
             <i class="bi bi-people me-2"></i> Sobre
         </a>
-        <a href="<?= BASE_URL ?>docs/estrutura" class="btn btn-outline-success me-2 mb-2">
+        <a href="<?/*= BASE_URL */?>docs/estrutura" class="btn btn-outline-success me-2 mb-2">
             <i class="bi bi-diagram-3-fill me-2"></i> Estrutura
         </a>
-        <a href="<?= BASE_URL ?>docs/composer" class="btn btn-outline-danger me-2 mb-2">
+        <a href="<?/*= BASE_URL */?>docs/composer" class="btn btn-outline-danger me-2 mb-2">
             <i class="bi bi-box-seam me-2"></i> Composer
         </a>
-        <a href="<?= BASE_URL ?>docs/virtualhost" class="btn btn-outline-secondary me-2 mb-2">
+        <a href="<?/*= BASE_URL */?>docs/virtualhost" class="btn btn-outline-secondary me-2 mb-2">
             <i class="bi bi-hdd-network me-2"></i> Virtual host
         </a>
-    </div>
+    </div>-->
 
 </div>

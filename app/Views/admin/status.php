@@ -1,8 +1,13 @@
-<div class="container py-5">
-    <h1 class="text-primary text-center mb-4"><i class="bi bi-search me-2 text-primary"></i> Painel de Verificação de Integridade</h1>
+<div class="container">
+    <!-- 🧭 TÍTULO PRINCIPAL -->
+    <div data-aos="fade-down">
+        <h2 class="text-primary"><i class="bi bi-search me-2"></i> Painel de Verificação de Integridade</h2>
+        <p class="lead text-muted">Bem-vindo, admin! Aqui você gerencia o sistema.</p>
+    </div>
+    <hr class="my-4">
 
+    <div data-aos="fade-up">
     <div class="row row-cols-1 row-cols-md-2 g-4">
-
         <?php
         $itens = [
             'env' => ['label' => '.env carregado', 'icon' => 'bi-file-earmark-lock', 'color' => 'primary'],
@@ -27,7 +32,9 @@
                 </div>
             </div>
         <?php endforeach; ?>
-
+    </div>
     </div>
 </div>
+<hr class="mt-5">
+<p class="text-end text-muted small">Última atualização: <?= date('d/m/Y') ?> • Desenvolvido com PHP</p>
 

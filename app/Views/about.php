@@ -79,14 +79,13 @@
     </div>
 
     <!-- NAVEGAÇÃO -->
-    <div class="text-center mt-4" data-aos="fade-up">
-        <a href="<?= BASE_URL ?>home" class="btn btn-outline-primary me-2 mb-2">
+<!--    <div class="text-center mt-4" data-aos="fade-up">
+        <a href="<?/*= BASE_URL */?>home" class="btn btn-outline-primary me-2 mb-2">
             <i class="bi bi-house-door me-2"></i> Início
         </a>
-        <a href="<?= BASE_URL ?>docs/estrutura" class="btn btn-outline-success me-2 mb-2">
+        <a href="<?/*= BASE_URL */?>docs/estrutura" class="btn btn-outline-success me-2 mb-2">
             <i class="bi bi-diagram-3-fill me-2"></i> Ver Estrutura
         </a>
-
-    </div>
+    </div>-->
 
 </div>

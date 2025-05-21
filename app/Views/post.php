@@ -1,6 +1,6 @@
 <!-- app/Views/post.php -->
 
-<div class="container py-5">
+<div class="container">
 
     <!-- 🧭 Cabeçalho do Post -->
     <div class="text-center mb-4" data-aos="fade-down">

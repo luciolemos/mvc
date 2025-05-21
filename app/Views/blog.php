@@ -3,7 +3,7 @@
     <!-- Título -->
     <div class="text-center mb-5" data-aos="fade-down">
         <h1 class="text-primary">
-            <i class="bi bi-journal-text me-2"></i>Blog Técnico
+            <i class="bi bi-journal-text me-2"></i>Blog do Dev
         </h1>
         <p class="lead text-muted">Postagens técnicas, dicas e novidades do projeto</p>
     </div>
@@ -12,7 +12,7 @@
     <div class="row g-4" data-aos="fade-up">
         <?php if (!empty($posts)): ?>
             <?php foreach ($posts as $post): ?>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="card h-100 shadow-sm border-0">
                         <div class="card-body">
                             <h5 class="card-title text-primary">

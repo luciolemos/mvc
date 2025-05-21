@@ -1,7 +1,7 @@
 <?php
 // app/Controllers/BlogController.php
 
-namespace App\Controllers;
+namespace App\Controllers\Site;
 
 use App\Core\Controller;
 use App\Models\Post;

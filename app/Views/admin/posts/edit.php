@@ -1,6 +1,12 @@
-<div class="container py-5">
-    <h3 class="text-primary mb-4"><i class="bi bi-pencil-square me-2"></i>Editar Post</h3>
+<div class="container">
+    <!-- 🧭 TÍTULO PRINCIPAL -->
+    <div data-aos="fade-down">
+        <h2 class="text-primary"><i class="bi bi-pencil-square me-2"></i>Editar Post</h2>
+        <p class="lead text-muted">Aqui você edita seu post. Seja bem vindo!</p>
+    </div>
+    <hr class="my-4">
 
+    <div data-aos="fade-up">
     <form method="POST" action="<?= BASE_URL ?>admin/posts/update/<?= $post['id'] ?>">
         <div class="mb-3">
             <label for="titulo" class="form-label">Título</label>
@@ -26,5 +32,9 @@
             </button>
         </div>
     </form>
+    </div>
 </div>
+<hr class="mt-5">
+<p class="text-end text-muted small">Última atualização: <?= date('d/m/Y') ?> • Desenvolvido com PHP</p>
+
 

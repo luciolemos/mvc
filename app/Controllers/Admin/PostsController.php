@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Core\Controller;
 use App\Models\Post;
 
-class PostAdminController extends Controller {
+class PostsController extends Controller {
 
     private $post;
 
@@ -28,11 +28,11 @@ class PostAdminController extends Controller {
             $posts = $this->post->todos();
         }
 
-        $this->view('admin/posts/index', compact('posts'));
+        $this->view('admin/posts/index', compact('posts'), 'admin');  // ← aqui
     }
 
     public function create() {
-        $this->view('admin/posts/create');
+        $this->view('admin/posts/create', [], 'admin');  // ← layout admin
     }
 
     public function store() {
@@ -41,6 +41,7 @@ class PostAdminController extends Controller {
             $slug     = $_POST['slug'] ?? '';
             $conteudo = $_POST['conteudo'] ?? '';
             $autor    = $_SESSION['user'] ?? 'admin';
+            $action   = $_POST['action'] ?? 'save_exit';
 
             $this->post->criar($titulo, $slug, $conteudo, $autor);
 
@@ -49,14 +50,28 @@ class PostAdminController extends Controller {
                 'message' => '🎉 Post criado com sucesso!'
             ];
 
-            header('Location: ' . BASE_URL . 'admin/posts');
+            if ($action === 'save_continue') {
+                header('Location: ' . BASE_URL . 'admin/posts/create');
+            } else {
+                header('Location: ' . BASE_URL . 'admin/posts');
+            }
             exit;
         }
+
+        // fallback
+        $_SESSION['toast'] = [
+            'type' => 'danger',
+            'message' => '⚠️ Método inválido para criar post!'
+        ];
+        header('Location: ' . BASE_URL . 'admin/posts/create');
+        exit;
     }
+
+
 
     public function edit($id) {
         $post = $this->post->encontrarPorId($id);
-        $this->view('admin/posts/edit', compact('post'));
+        $this->view('admin/posts/edit', compact('post'), 'admin');  // ← layout admin
     }
 
     public function update($id) {

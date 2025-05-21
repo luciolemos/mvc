@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Core\Controller;
 
-class AdminController extends Controller {
+class AuthController extends Controller {
 
     public function index() {
         if (!isset($_SESSION['user'])) {
-            $this->view('admin/login');
+            $this->view('admin/login', [], 'auth'); // <<-- renderiza com o layout auth.php
         } else {
-            $this->view('admin/dashboard');
+            header('Location: ' . BASE_URL . 'admin/dashboard');
+            exit;
         }
     }
+
 
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -21,7 +23,7 @@ class AdminController extends Controller {
 
             if ($user === 'admin' && $pass === '1234') {
                 $_SESSION['user'] = $user;
-                header('Location: ' . BASE_URL . 'admin');
+                header('Location: ' . BASE_URL . 'admin/dashboard');
                 exit;
             } else {
                 $error = 'Usuário ou senha inválidos.';
@@ -34,6 +36,9 @@ class AdminController extends Controller {
 
     public function logout() {
         session_destroy();
-        header('Location: ' . BASE_URL . 'admin');
+        header('Location: ' . BASE_URL . 'admin/auth');
+
+        exit;
     }
+
 }

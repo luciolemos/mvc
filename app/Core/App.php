@@ -4,49 +4,49 @@ namespace App\Core;
 
 use App\Core\Router;
 
-/**
-* Esse é o núcleo do seu sistema de rotas dinâmico!
-* Com base nesse App.php, você não precisa usar $router->post(...) em lugar nenhum! Seu roteador é dinâmico.
-* O que define a rota? Nome do controller e nome do método
-*/
-
 class App {
-    protected $controller = 'HomeController';
+    protected $controller;
     protected $method = 'index';
     protected $params = [];
 
     public function __construct() {
         $url = Router::parseUrl();
+        $mainRoute = $url[0] ?? 'home';
 
-        // 🔁 Redirecionamento específico para painel de posts
-        if ($url[0] === 'admin' && isset($url[1]) && $url[1] === 'posts') {
-            $this->controller = new \App\Controllers\PostAdminController();
+        // 🔐 Rota para ADMIN (Dashboard, Posts, Docs, etc.)
+        if ($mainRoute === 'admin') {
+            $controllerName = ucfirst($url[1] ?? 'Dashboard') . 'Controller';
+            $controllerPath = "\\App\\Controllers\\Admin\\$controllerName";
             $this->method = $url[2] ?? 'index';
             $this->params = array_slice($url, 3);
-            call_user_func_array([$this->controller, $this->method], $this->params);
-            return;
         }
 
+        // 🌐 Rota para SITE público (Home, Blog, Contact, etc.)
+        else {
+            $controllerName = ucfirst($mainRoute) . 'Controller';
+            $controllerPath = "\\App\\Controllers\\Site\\$controllerName";
+            $this->method = $url[1] ?? 'index';
+            $this->params = array_slice($url, 2);
+        }
 
-        $controllerName = ucfirst($url[0] ?? 'home') . 'Controller';
-        $controllerPath = "\\App\\Controllers\\$controllerName";
-
+        // ⚙️ Instancia o controller se existir
         if (class_exists($controllerPath)) {
             $this->controller = new $controllerPath();
-            unset($url[0]);
         } else {
-            http_response_code(404);
-            echo "404 - Página não encontrada.";
-            exit;
+            return $this->notFound("Controller '$controllerPath' não encontrado.");
         }
 
-        if (isset($url[1]) && method_exists($this->controller, $url[1])) {
-            $this->method = $url[1];
-            unset($url[1]);
+        // ⚠️ Verifica se o método existe
+        if (!method_exists($this->controller, $this->method)) {
+            return $this->notFound("Método '{$this->method}' não encontrado em $controllerName.");
         }
 
-        $this->params = $url ? array_values($url) : [];
-
+        // 🚀 Executa a ação
         call_user_func_array([$this->controller, $this->method], $this->params);
+    }
+
+    private function notFound($msg = 'Página não encontrada') {
+        http_response_code(404);
+        die("❌ 404 - $msg");
     }
 }

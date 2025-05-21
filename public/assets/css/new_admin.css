@@ -1,0 +1,149 @@
+:root {
+    --admin-sidebar-width: 260px;
+    --admin-navbar-height: 56px;
+    --admin-primary: #0d6efd;
+    --admin-dark: #212529;
+    --admin-light: #f8f9fa;
+    --admin-transition: all 0.3s ease;
+}
+
+/* Layout Base */
+.admin-body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-layout {
+    display: flex;
+    flex: 1;
+    padding-top: var(--admin-navbar-height);
+}
+
+/* Navbar */
+.admin-navbar {
+    height: var(--admin-navbar-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar */
+.admin-sidebar {
+    width: var(--admin-sidebar-width);
+    height: calc(100vh - var(--admin-navbar-height));
+    position: fixed;
+    left: 0;
+    transition: var(--admin-transition);
+    overflow-y: auto;
+    z-index: 1020;
+}
+
+.admin-sidebar .nav-link {
+    transition: var(--admin-transition);
+    margin-bottom: 2px;
+}
+
+.admin-sidebar .nav-link:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.admin-sidebar .nav-link.active {
+    background-color: var(--admin-primary);
+    font-weight: 500;
+}
+
+.admin-sidebar .nav-link i {
+    width: 20px;
+    text-align: center;
+}
+
+.admin-sidebar .collapse {
+    transition: var(--admin-transition);
+}
+
+/* Conteúdo Principal */
+.content-area {
+    margin-left: var(--admin-sidebar-width);
+    width: calc(100% - var(--admin-sidebar-width));
+    min-height: calc(100vh - var(--admin-navbar-height));
+    transition: var(--admin-transition);
+}
+
+/* Transições */
+.transition-all {
+    transition: var(--admin-transition);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    font-size: 0.85rem;
+    padding: 0.5rem 0;
+    background-color: transparent;
+}
+
+/* Cards */
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: var(--admin-transition);
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* Tabelas */
+.table {
+    font-size: 0.9rem;
+}
+
+.table th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    color: #6c757d;
+}
+
+/* Formulários */
+.form-control, .form-select {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Toast */
+.toast {
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+    }
+
+    .admin-sidebar.active {
+        transform: translateX(0);
+    }
+
+    .content-area {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}

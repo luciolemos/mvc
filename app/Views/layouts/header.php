@@ -28,7 +28,7 @@ $subRoute  = $segments[1] ?? null;
 <!-- 🔝 Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand ms-2" href="<?= BASE_URL ?>">
+        <a class="navbar-brand ms-1" href="<?= BASE_URL ?>">
             <img src="<?= BASE_URL ?>assets/images/Full stack2.png" alt="Logo" class="brand-logo" height="40">
         </a>
 
@@ -60,49 +60,28 @@ $subRoute  = $segments[1] ?? null;
                     CONTATO
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= $mainRoute === 'status' ? 'active border-bottom border-2 pb-1' : '' ?>" href="<?= BASE_URL ?>status">
+                <!-- <li class="nav-item">
+                    <a class="nav-link <?/*= $mainRoute === 'status' ? 'active border-bottom border-2 pb-1' : '' */?>" href="<?/*= BASE_URL */?>status">
                     STATUS
                     </a>
-                </li>
+                </li>-->
 
-                <!-- DOCUMENTAÇÃO -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle <?= $mainRoute === 'docs' ? 'active border-bottom border-2 pb-1' : '' ?>" href="#" data-bs-toggle="dropdown">
-                       DOCUMENTAÇÃO
+
+                <!-- LOGIN ADMIN -->
+                <li class="nav-item">
+                    <a class="nav-link<?= $mainRoute === 'admin' ? 'active' : '' ?>" target="_blank"
+                       href="<?= BASE_URL ?>admin/auth">
+                        <i class="bi bi-person-lock me-1"></i> LOGIN
                     </a>
-                    <?php
-                    $docs = [
-                        'estrutura' => ['label' => 'Estrutura do Projeto', 'emoji' => ''],
-                        'virtualhost' => ['label' => 'Virtual Host', 'emoji' => ''],
-                        'composer' => ['label' => 'composer.json', 'emoji' => ''],
-                        'diagrama' => ['label' => 'Diagrama de Classes', 'emoji' => ''],
-                        'fluxomvc' => ['label' => 'Fluxo MVC', 'emoji' => ''],
-                        'fluxopost' => ['label' => 'Fluxo POST', 'emoji' => ''],
-                        'novofluxomvc' => ['label' => 'Entenda o Fluxo MVC', 'emoji' => ''],
-                        'caracteristicas' => ['label' => 'Características', 'emoji' => ''],
-                    ];
-                    ?>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <?php foreach ($docs as $rota => $item): ?>
-                            <li>
-                                <a class="dropdown-item d-flex justify-content-between align-items-center <?= ($mainRoute === 'docs' && $subRoute === $rota) ? 'active' : '' ?>"
-                                   href="<?= BASE_URL ?>docs/<?= $rota ?>">
-                                    <span><?= $item['emoji'] ?> <?= $item['label'] ?></span>
-                                    <?= ($mainRoute === 'docs' && $subRoute === $rota) ? '<i class="bi bi-chevron-left"></i>' : '' ?>
-                                </a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
                 </li>
 
                 <!-- ADMINISTRAÇÃO -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle <?= $mainRoute === 'admin' || $mainRoute === 'coverage' ? 'active border-bottom border-2 pb-1' : '' ?>" href="#" data-bs-toggle="dropdown">
+                <!--<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle <?/*= $mainRoute === 'admin' || $mainRoute === 'coverage' ? 'active border-bottom border-2 pb-1' : '' */?>" href="#" data-bs-toggle="dropdown">
                        ADMINISTRAÇÃO
                     </a>
                     <?php
-                    $adminMenu = [
+/*                    $adminMenu = [
                         'admin' => ['label' => 'Login Seguro', 'emoji' => '🔑'],
                         'coverage' => ['label' => 'Relatório de Testes', 'emoji' => '📊'],
                         'produtos' => ['label' => 'Produtos', 'emoji' => '📦'],
@@ -110,18 +89,49 @@ $subRoute  = $segments[1] ?? null;
                         'users' => ['label' => 'Usuários', 'emoji' => '👥'],
                         'settings' => ['label' => 'Configurações', 'emoji' => '⚙️']
                     ];
-                    ?>
+                    */?>
                     <ul class="dropdown-menu dropdown-menu-dark">
-                        <?php foreach ($adminMenu as $rota => $item): ?>
+                        <?php /*foreach ($adminMenu as $rota => $item): */?>
                             <li>
-                                <a class="dropdown-item d-flex align-items-center <?= $mainRoute === $rota ? 'active' : '' ?>"
-                                   href="<?= BASE_URL . ($rota === 'admin' ? 'admin' : 'admin/' . $rota) ?>">
-                                    <span><?= $item['emoji'] ?> <?= $item['label'] ?></span>
+                                <a class="dropdown-item d-flex align-items-center <?/*= $mainRoute === $rota ? 'active' : '' */?>"
+                                   href="<?/*= BASE_URL . ($rota === 'admin' ? 'admin' : 'admin/' . $rota) */?>">
+                                    <span><?/*= $item['emoji'] */?> <?/*= $item['label'] */?></span>
                                 </a>
                             </li>
-                        <?php endforeach; ?>
+                        <?php /*endforeach; */?>
                     </ul>
-                </li>
+                </li>-->
+
+                <!-- DOCUMENTAÇÃO -->
+                <!--<li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle <?/*= $mainRoute === 'docs' ? 'active border-bottom border-2 pb-1' : '' */?>" href="#" data-bs-toggle="dropdown">
+                       DOCUMENTAÇÃO
+                    </a>
+                    <?php
+                /*                    $docs = [
+                                        'estrutura' => ['label' => 'Estrutura do Projeto', 'emoji' => ''],
+                                        'virtualhost' => ['label' => 'Virtual Host', 'emoji' => ''],
+                                        'composer' => ['label' => 'composer.json', 'emoji' => ''],
+                                        'diagrama' => ['label' => 'Diagrama de Classes', 'emoji' => ''],
+                                        'fluxomvc' => ['label' => 'Fluxo MVC', 'emoji' => ''],
+                                        'fluxopost' => ['label' => 'Fluxo POST', 'emoji' => ''],
+                                        'novofluxomvc' => ['label' => 'Entenda o Fluxo MVC', 'emoji' => ''],
+                                        'caracteristicas' => ['label' => 'Características', 'emoji' => ''],
+                                        'blog' => ['label' => 'Blog', 'emoji' => ''],
+                                    ];
+                                    */?>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <?php /*foreach ($docs as $rota => $item): */?>
+                            <li>
+                                <a class="dropdown-item d-flex justify-content-between align-items-center <?/*= ($mainRoute === 'docs' && $subRoute === $rota) ? 'active' : '' */?>"
+                                   href="<?/*= BASE_URL */?>docs/<?/*= $rota */?>">
+                                    <span><?/*= $item['emoji'] */?> <?/*= $item['label'] */?></span>
+                                    <?/*= ($mainRoute === 'docs' && $subRoute === $rota) ? '<i class="bi bi-chevron-left"></i>' : '' */?>
+                                </a>
+                            </li>
+                        <?php /*endforeach; */?>
+                    </ul>
+                </li>-->
 
             </ul>
         </div>

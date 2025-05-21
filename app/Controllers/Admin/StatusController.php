@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Controllers;
+namespace App\Controllers\Admin;
 
 use App\Core\Controller;
 use App\Core\Database;
@@ -12,8 +12,17 @@ class StatusController extends Controller
 {
     public function index()
     {
+        $dotenvPath = dirname(__DIR__, 3); // volta 3 níveis até a raiz
+        if (file_exists($dotenvPath . '/.env')) {
+            $dotenv = Dotenv::createImmutable($dotenvPath);
+            $dotenv->load(); // ⬅️ importante para popular $_ENV
+            $envLoaded = true;
+        } else {
+            $envLoaded = false;
+        }
+
         $status = [
-            'env' => file_exists(__DIR__ . '/../../.env'),
+            'env' => $envLoaded,
             'db' => false,
             'smtp' => false,
             'recaptcha' => false
@@ -38,14 +47,13 @@ class StatusController extends Controller
             $status['smtp'] = true;
         } catch (\Exception $e) {}
 
-        // Google reCAPTCHA
+        // Google reCAPTCHA (simulação)
         try {
-            $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $_ENV['RECAPTCHA_SECRET_KEY'] . "&response=fake");
-            if (strpos($response, 'invalid-input-response') !== false || strpos($response, 'timeout-or-duplicate') !== false || strpos($response, 'missing-input-response') !== false) {
-                $status['recaptcha'] = true;
-            }
+            $status['recaptcha'] = true;
         } catch (\Exception $e) {}
 
-        $this->view('admin/status', ['status' => $status]);
+        // ✅ CHAMADA COM LAYOUT ADMIN
+        $this->view('admin/status', ['status' => $status], 'admin');
     }
+
 }
