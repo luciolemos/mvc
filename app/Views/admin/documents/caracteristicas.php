@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid px-3 px-md-4 py-4">
     <!-- 🧭 TÍTULO PRINCIPAL -->
     <div data-aos="fade-down">
         <h2 class="text-primary"><i class="bi bi-tools me-2"></i>Características Técnicas</h2>
@@ -35,7 +35,7 @@
     <!-- ✅ Funcionalidades Atuais -->
     <div class="mb-5" data-aos="zoom-in">
         <h4 class="text-primary"><i class="bi bi-check2-circle me-2"></i>Funcionalidades Atuais</h4>
-        <ul class="mb-0">
+        <ul class="timeline list-unstyled ps-0 mt-3">
             <li><i class="bi bi-lightning-charge text-warning me-2"></i>Autoload PSR-4 com <code>Composer</code></li>
             <li><i class="bi bi-signpost-split text-info me-2"></i>Roteamento sem framework</li>
             <li><i class="bi bi-shield-lock text-success me-2"></i>Login com sessão segura</li>
@@ -173,7 +173,7 @@
     <!-- 🔐 Requisitos -->
     <div class="mb-5" data-aos="zoom-in">
         <h4><i class="bi bi-list-check me-2"></i>Requisitos Técnicos</h4>
-        <ul>
+        <ul class="timeline list-unstyled ps-0 mt-3">
             <li><i class="bi bi-terminal-dash me-2 text-primary"></i>PHP 8.4 ou superior</li>
             <li><i class="bi bi-database-fill me-2 text-warning"></i>MySQL ou MariaDB</li>
             <li><i class="bi bi-globe2 me-2 text-info"></i>Apache + mod_rewrite</li>
@@ -185,28 +185,21 @@
     <!-- 🧱 Roadmap -->
     <div class="mb-5" data-aos="zoom-in">
         <h4><i class="bi bi-kanban me-2"></i>Próximas Etapas</h4>
-        <ul>
-            <li><i class="bi bi-person-lock me-2 text-primary"></i>Login via banco e permissões</li>
-            <li><i class="bi bi-people-fill me-2 text-warning"></i>CRUD de usuários</li>
-            <li><i class="bi bi-database-fill me-2 text-secondary"></i>Migrations</li>
-            <li><i class="bi bi-shield-shaded me-2 text-info"></i>Middleware de autenticação</li>
-            <li><i class="bi bi-bar-chart-line me-2 text-danger"></i>Dashboard com gráficos Chart.js</li>
-            <li><i class="bi bi-cloud-arrow-down me-2 text-success"></i>API RESTful</li>
-            <li><i class="bi bi-file-earmark-arrow-up me-2 text-primary"></i>Upload de arquivos</li>
-            <li><i class="bi bi-journal-check me-2 text-warning"></i>Logs e auditoria</li>
-            <li><i class="bi bi-shield-exclamation me-2 text-info"></i>CSRF e XSS Protection</li>
+        <ul class="timeline list-unstyled ps-0 mt-3">
+            <li><i class="bi bi-square me-2 text-info"></i>Login via banco e permissões</li>
+            <li><i class="bi bi-square me-2 text-info"></i>CRUD de usuários</li>
+            <li><i class="bi bi-square me-2 text-info"></i>Migrations</li>
+            <li><i class="bi bi-square me-2 text-info"></i>Middleware de autenticação</li>
+            <li><i class="bi bi-square me-2 text-info"></i>Dashboard com gráficos Chart.js</li>
+            <li><i class="bi bi-square me-2 text-info"></i>API RESTful</li>
+            <li><i class="bi bi-square me-2 text-info"></i>Upload de arquivos</li>
+            <li><i class="bi bi-square me-2 text-info"></i>Logs e auditoria</li>
+            <li><i class="bi bi-square me-2 text-info"></i>CSRF e XSS Protection</li>
+            <li><i class="bi bi-square me-2 text-info"></i>Badges dinâmicos</li>
+            <li><i class="bi bi-square me-2 text-info"></i>Paginação de resultados no datatable dos posts</li>
+            <li><i class="bi bi-square me-2 text-info"></i>Implementar uma versão com menu recolhível no desktop (menu lateral colapsável) mantendo compatibilidade mobile com offcanvas!</li>
+            <li><i class="bi bi-square me-2 text-info"></i>Aprimorar os alertas do formulário de contato.</li>
         </ul>
     </div>
-
-    <!-- 🔗 Navegação -->
-    <div class="text-center mt-4" data-aos="fade-up">
-        <a href="<?= BASE_URL ?>docs/estrutura" class="btn btn-outline-primary me-2">
-            <i class="bi bi-diagram-3-fill me-1"></i> Ver Estrutura
-        </a>
-        <a href="<?= BASE_URL ?>home" class="btn btn-outline-secondary">
-            <i class="bi bi-house-door me-1"></i> Início
-        </a>
-    </div>
 </div>
-<hr class="mt-5">
-<p class="text-end text-muted small">Última atualização: <?= date('d/m/Y') ?> • Desenvolvido com PHP</p>
+

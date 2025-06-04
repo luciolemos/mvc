@@ -34,7 +34,5 @@
     </form>
     </div>
 </div>
-<hr class="mt-5">
-<p class="text-end text-muted small">Última atualização: <?= date('d/m/Y') ?> • Desenvolvido com PHP</p>
 
 

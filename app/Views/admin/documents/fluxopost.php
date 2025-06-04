@@ -1,5 +1,5 @@
 <!-- 📄 docs/fluxomvc.php -->
-<div class="container">
+<div class="container-fluid px-3 px-md-4 py-4">
 
     <!-- 🧭 Título -->
     <div data-aos="fade-down">
@@ -15,7 +15,7 @@
 
     <!-- 🧬 Diagrama sequência -->
     <div class="bg-light border rounded p-4" data-aos="fade-up">
-        <h5 class="text-primary mb-3"><i class="bi bi-graph-up me-2"></i>Diagrama de sequência</h5>
+        <h5 class="text-primary mb-3"><i class="bi bi-graph-up me-2"></i>Diagrama de sequência (para o caso dos post especificamente).</h5>
         <div class="mermaid">
             sequenceDiagram
             participant Usuário
@@ -49,6 +49,4 @@
         </ol>
     </div>
 </div>
-<hr class="mt-5">
-<p class="text-end text-muted small">Última atualização: <?= date('d/m/Y') ?> • Desenvolvido com PHP</p>
 

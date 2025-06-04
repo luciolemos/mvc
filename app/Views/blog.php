@@ -1,5 +1,5 @@
 <!-- app/Views/blog.php -->
-<div class="container py-5">
+<div class="container mt-5 py-5">
     <!-- Título -->
     <div class="text-center mb-5" data-aos="fade-down">
         <h1 class="text-primary">

@@ -1,56 +1,42 @@
 <?php
 
-// app/Models/Post.php
 namespace App\Models;
 
 use App\Core\Database;
+use PDO;
 
-class Post {
-    protected $db;
+class Post extends Database {
+    protected string $table = 'posts';
 
-    public function __construct() {
-        if (session_status() === PHP_SESSION_NONE) session_start();
-
-        $this->db = Database::connect();
+    public function todos(): array {
+        return $this->all($this->table);
     }
 
-    public function todos() {
-        $stmt = $this->db->query("SELECT*FROM posts ORDER BY criado_em DESC");
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    public function encontrarPorId(int $id): ?array {
+        return $this->find($this->table, $id);
     }
 
-    public function encontrarPorSlug($slug) {
-        $stmt = $this->db->prepare("SELECT*FROM posts WHERE slug = ?");
+    public function encontrarPorSlug(string $slug): ?array {
+        $stmt = $this->connect()->prepare("SELECT * FROM {$this->table} WHERE slug = ?");
         $stmt->execute([$slug]);
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $stmt->fetch(PDO::FETCH_ASSOC) ?: null;
     }
 
-    public function encontrarPorId($id) {
-        $stmt = $this->db->prepare("SELECT * FROM posts WHERE id = ?");
-        $stmt->execute([$id]);
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    public function criar(array $data): bool {
+        return $this->insert($this->table, $data);
     }
 
-    public function criar($titulo, $slug, $conteudo, $autor) {
-        $stmt = $this->db->prepare("INSERT INTO posts (titulo, slug, conteudo, autor) VALUES (?, ?, ?, ?)");
-        $stmt->execute([$titulo, $slug, $conteudo, $autor]);
+    public function atualizar(int $id, array $data): bool {
+        return $this->update($this->table, $id, $data);
     }
 
-    public function atualizar($id, $titulo, $slug, $conteudo) {
-        $stmt = $this->db->prepare("UPDATE posts SET titulo = ?, slug = ?, conteudo = ? WHERE id = ?");
-        $stmt->execute([$titulo, $slug, $conteudo, $id]);
+    public function excluir(int $id): bool {
+        return $this->delete($this->table, $id);
     }
 
-    public function excluir($id) {
-        $stmt = $this->db->prepare("DELETE FROM posts WHERE id = ?");
-        $stmt->execute([$id]);
+    public function buscarPorTitulo(string $termo): array {
+        $stmt = $this->connect()->prepare("SELECT * FROM {$this->table} WHERE titulo LIKE :termo ORDER BY criado_em DESC");
+        $stmt->execute([':termo' => '%' . $termo . '%']);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    public function buscarPorTitulo($termo) {
-        $stmt = $this->db->prepare("SELECT * FROM posts WHERE titulo LIKE ? ORDER BY criado_em DESC");
-        $stmt->execute(['%' . $termo . '%']);
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
-
 }

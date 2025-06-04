@@ -1,5 +1,5 @@
 <!-- 📄 docs/fluxomvc.php -->
-<div class="container">
+<div class="container-fluid px-3 px-md-4 py-4">
 
     <!-- CABEÇALHO -->
     <div data-aos="fade-down">
@@ -130,5 +130,3 @@ URL → .htaccess → index.php → App.php → Router
         </ul>
     </div>
 </div>
-<hr class="mt-5">
-<p class="text-end text-muted small">Última atualização: <?= date('d/m/Y') ?> • Desenvolvido com PHP</p>

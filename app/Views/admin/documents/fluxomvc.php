@@ -1,5 +1,5 @@
 <!-- 📄 docs/fluxomvc.php -->
-<div class="container">
+<div class="container-fluid px-3 px-md-4 py-4">
     <!-- 🧭 Título -->
     <div data-aos="fade-down">
         <h2 class="text-primary"><i class="bi bi-diagram-3-fill me-2"></i>Fluxo MVC da Aplicação</h2>
@@ -128,7 +128,8 @@ URL → .htaccess → index.php → App.php → Router
     </div>
 
     <!-- 🧬 Diagrama sequência -->
-    <div class="bg-light border rounded p-4" data-aos="fade-up">
+    <h5 class="text-primary mb-5"><i class="bi bi-graph-up me-2"></i>Diagrama de sequência I</h5>
+    <div class="bg-light border rounded p-4 mb-5" data-aos="fade-up">
         <h5 class="text-primary mb-3"><i class="bi bi-graph-up me-2"></i>Diagrama de sequência</h5>
         <div class="mermaid">
             sequenceDiagram
@@ -148,6 +149,38 @@ URL → .htaccess → index.php → App.php → Router
             View-->>Usuário: Exibe HTML com dados
         </div>
     </div>
+
+
+
+    <!-- 🔁 Diagrama de Sequência (Mermaid) -->
+    <h5 class="text-primary mb-5"><i class="bi bi-graph-up me-2"></i>Diagrama de sequência II</h5>
+    <div class="bg-light border rounded p-4 mb-5" data-aos="fade-up">
+        <h5 class="text-primary mb-3"><i class="bi bi-diagram-2-fill me-2"></i>Fluxo visual (Mermaid)</h5>
+        <div class="mermaid">
+            sequenceDiagram
+            participant Navegador
+            participant index.php
+            participant App.php
+            participant Router.php
+            participant PostsController
+            participant PostModel
+            participant View
+
+            Navegador->>index.php: POST /admin/posts/store
+            index.php->>App.php: __construct()
+            App.php->>Router.php: parseURL()
+            Router.php-->>App.php: controller + método + params
+            App.php->>PostsController: store()
+
+            PostsController->>PostModel: criar($data)
+            PostModel->>DB: INSERT INTO posts...
+
+            PostsController->>View: redirect com toast
+            View-->>Navegador: Página HTML (posts index)
+
+
+        </div>
+    </div>
+
 </div>
-<hr class="mt-5">
-<p class="text-end text-muted small">Última atualização: <?= date('d/m/Y') ?> • Desenvolvido com PHP</p>
+

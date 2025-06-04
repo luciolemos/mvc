@@ -12,7 +12,9 @@ class Controller {
             // Renderiza layout correto
             require_once "../app/Views/layouts/{$layout}.php";
         } else {
-            echo "View '$view' não encontrada.";
+            http_response_code(500);
+            die("❌ View '$view' não encontrada em {$viewPath}");
+
         }
     }
 

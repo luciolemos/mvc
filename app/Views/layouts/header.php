@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>MyApp MVC</title>
+    <title>OPUS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS Externos -->
@@ -26,7 +26,7 @@ $subRoute  = $segments[1] ?? null;
 ?>
 
 <!-- 🔝 Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
     <div class="container">
         <a class="navbar-brand ms-1" href="<?= BASE_URL ?>">
             <img src="<?= BASE_URL ?>assets/images/Full stack2.png" alt="Logo" class="brand-logo" height="40">

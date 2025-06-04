@@ -1,135 +1,119 @@
+/* 🎯 VARIÁVEIS GLOBAIS DO DASHBOARD */
 :root {
-    --admin-sidebar-width: 260px;
-    --admin-navbar-height: 56px;
-    --admin-primary: #0d6efd;
-    --admin-dark: #212529;
-    --admin-light: #f8f9fa;
-    --admin-transition: all 0.3s ease;
+    --admin-sidebar-width: 260px;           /* Largura padrão do menu lateral */
+    --admin-navbar-height: 56px;            /* Altura fixa da navbar superior */
+    --admin-primary: #0d6efd;               /* Cor primária (azul Bootstrap) */
+    --admin-primary-dark: #0b5ed7;          /* Variante escura da cor primária */
+    --admin-dark: #212529;                  /* Cor de fundo escuro (sidebar/bg) */
+    --admin-light: #f8f9fa;                 /* Cor clara (usada em backgrounds) */
+    --admin-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* Transição suave */
+    --admin-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);  /* Sombra leve padrão */
+    --admin-shadow-lg: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);      /* Sombra grande usada em menus/dropdowns */
 }
 
-/* Layout Base */
+/* 🧱 LAYOUT BASE */
 .admin-body {
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background-color: #f5f7fa;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;  /* Fonte moderna e segura */
+    background-color: #f5f7fa;          /* Tom claro para o fundo do painel */
+    min-height: 100vh;                  /* Garante altura total da tela */
+    display: flex;                      /* Define como flex container */
+    flex-direction: column;            /* Coloca o conteúdo em colunas */
+    overflow-x: hidden;                /* Remove scroll horizontal */
 }
 
+/* 🔒 Desativa scroll em mobile quando menu estiver ativo */
+.admin-body.sidebar-active {
+    overflow: hidden;
+}
+
+/* ⚙️ Wrapper geral do dashboard */
 .admin-layout {
-    display: flex;
+    display: flex;                     /* Sidebar + Main */
     flex: 1;
-    padding-top: var(--admin-navbar-height);
+    padding-top: var(--admin-navbar-height); /* Compensa altura da navbar fixa */
 }
 
-/* Navbar */
+/* 🔝 NAVBAR FIXA */
 .admin-navbar {
-    height: var(--admin-navbar-height);
-    position: fixed;
+    height: var(--admin-navbar-height);   /* Altura padrão */
+    position: fixed;                      /* Fixa no topo */
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1030;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1030;                        /* Acima do sidebar */
+    box-shadow: var(--admin-shadow);     /* Sombra leve */
 }
 
-/* Sidebar */
+/* 📚 MENU LATERAL FIXO */
 .admin-sidebar {
-    width: var(--admin-sidebar-width);
-    height: calc(100vh - var(--admin-navbar-height));
+    width: var(--admin-sidebar-width);                    /* Largura fixa */
+    height: calc(100vh - var(--admin-navbar-height));     /* Preenche verticalmente, abaixo da navbar */
     position: fixed;
     left: 0;
-    transition: var(--admin-transition);
-    overflow-y: auto;
-    z-index: 1020;
+    overflow-y: auto;                                     /* Scroll vertical */
+    z-index: 1020;                                        /* Logo abaixo da navbar */
+    transition: transform var(--admin-transition), box-shadow var(--admin-transition);
+    scrollbar-width: thin;                                /* Scroll fino Firefox */
+    scrollbar-color: rgba(255,255,255,0.2) transparent;    /* Cor do scroll */
 }
 
+/* 🎯 Scrollbar customizado para WebKit */
+.admin-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+.admin-sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 3px;
+}
+
+/* 📌 LINKS DO SIDEBAR */
 .admin-sidebar .nav-link {
-    transition: var(--admin-transition);
-    margin-bottom: 2px;
+    transition: var(--admin-transition);   /* Suaviza hover e active */
+    margin-bottom: 2px;                    /* Espaçamento vertical */
+    border-radius: 0.25rem;                /* Arredonda levemente */
 }
 
 .admin-sidebar .nav-link:hover:not(.active) {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);  /* Hover sutil */
 }
 
 .admin-sidebar .nav-link.active {
-    background-color: var(--admin-primary);
+    background-color: var(--admin-primary);     /* Cor ativa */
     font-weight: 500;
 }
 
 .admin-sidebar .nav-link i {
-    width: 20px;
+    width: 20px;                      /* Alinha os ícones */
     text-align: center;
-}
-
-.admin-sidebar .collapse {
     transition: var(--admin-transition);
 }
 
-/* Conteúdo Principal */
+/* ▼ Animação para o ícone de seta do menu colapsável */
+.admin-sidebar .nav-item .bi-chevron-down {
+    transition: transform var(--admin-transition);
+}
+.admin-sidebar .nav-item .collapsed .bi-chevron-down {
+    transform: rotate(-90deg);        /* Seta rotacionada */
+}
+
+/* 🧱 CONTEÚDO PRINCIPAL */
 .content-area {
-    margin-left: var(--admin-sidebar-width);
-    width: calc(100% - var(--admin-sidebar-width));
-    min-height: calc(100vh - var(--admin-navbar-height));
-    transition: var(--admin-transition);
+    margin-left: var(--admin-sidebar-width);               /* Empurra do lado do menu */
+    width: calc(100% - var(--admin-sidebar-width));        /* Ajusta largura total */
+    min-height: calc(100vh - var(--admin-navbar-height));  /* Garante altura útil */
+    transition: margin var(--admin-transition);
 }
 
-/* Transições */
-.transition-all {
-    transition: var(--admin-transition);
-}
-
-/* Breadcrumb */
-.breadcrumb {
-    font-size: 0.85rem;
-    padding: 0.5rem 0;
-    background-color: transparent;
-}
-
-/* Cards */
-.card {
-    border: none;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-    transition: var(--admin-transition);
-}
-
-.card:hover {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-
-/* Tabelas */
-.table {
-    font-size: 0.9rem;
-}
-
-.table th {
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 0.5px;
-    color: #6c757d;
-}
-
-/* Formulários */
-.form-control, .form-select {
-    font-size: 0.9rem;
-    padding: 0.5rem 0.75rem;
-}
-
-/* Toast */
-.toast {
-    font-size: 0.9rem;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
+/* 📱 RESPONSIVIDADE PARA TABLETS & CELULARES */
+@media (max-width: 991.98px) {
     .admin-sidebar {
-        transform: translateX(-100%);
+        transform: translateX(-100%);    /* Oculta o sidebar */
+        box-shadow: none;
     }
 
     .admin-sidebar.active {
-        transform: translateX(0);
+        transform: translateX(0);        /* Exibe ao ativar */
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     }
 
     .content-area {
@@ -138,15 +122,132 @@
     }
 }
 
-/* Animações */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* 🔍 AJUSTES PARA MOBILE MENOR (smartphones) */
+@media (max-width: 767.98px) {
+    .breadcrumb {
+        font-size: 0.75rem;
+        padding: 0.25rem 0;
+    }
+
+    .p-4 {
+        padding: 1rem !important;     /* Reduz padding */
+    }
+
+    .admin-sidebar {
+        width: 80%;                   /* Ocupa 80% da largura da tela */
+    }
 }
 
-.fade-in {
-    animation: fadeIn 0.3s ease-in-out;
+/* ✅ AJUSTES DE TOASTS (notificações) */
+.toast-container {
+    z-index: 1090;   /* Acima de tudo */
 }
 
+.toast-header {
+    border-bottom: none;
+}
+
+/* ⬇️ DROPDOWN - MENU USUÁRIO */
+.dropdown-menu {
+    box-shadow: var(--admin-shadow-lg);
+    border: none;
+}
+
+/* 🌓 OVERLAY ESCURO PARA MENU MOBILE */
+.sidebar-overlay {
+    position: fixed;
+    top: var(--admin-navbar-height);  /* Começa abaixo da navbar */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1019;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--admin-transition);
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 📝 ESTILOS ESPECÍFICOS PARA A PÁGINA DE CRIAÇÃO DE POSTAGENS */
+.post-form .form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.post-form .form-control-lg {
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+}
+
+.post-form textarea.form-control {
+    min-height: 300px;
+}
+
+.post-form .input-group-text {
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 767.98px) {
+    .post-form .action-buttons .btn {
+        width: 100%;       /* Botões responsivos */
+    }
+
+    .post-form textarea.form-control {
+        min-height: 200px; /* Altura menor em mobile */
+    }
+}
+
+/* 💡 FIM DO CSS */
 
 
+/* =======================================================
+   DASHBOARD CARD STYLE (GLOBAL) MENU CONSTRUÇÃO CIVIL
+   ======================================================= */
+/* === DASHBOARD UNIFICADO (CARDS) === */
+.dashboard-card {
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+.dashboard-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.bg-primary-light { background-color: rgba(13, 110, 253, 0.1); }
+.bg-success-light { background-color: rgba(25, 135, 84, 0.1); }
+.bg-info-light    { background-color: rgba(13, 202, 240, 0.1); }
+.bg-warning-light { background-color: rgba(255, 193, 7, 0.1); }
+
+.dashboard-badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.4em 0.65em;
+}
+
+.stretched-link::after {
+    position: absolute;
+    content: "";
+    top: 0; bottom: 0; left: 0; right: 0;
+    z-index: 1;
+}
+
+.dashboard-footer {
+    background-color: rgba(13, 110, 253, 0.03);
+    font-size: 0.85rem;
+}

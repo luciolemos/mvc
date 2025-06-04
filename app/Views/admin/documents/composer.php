@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid px-3 px-md-4 py-4">
     <!-- Cabeçalho -->
     <div data-aos="fade-down">
         <h2 class="text-primary"><i class="bi bi-box-seam me-2"></i>Gerenciador de Dependências: Composer</h2>
@@ -101,8 +101,6 @@
         </div>
     </div>
 </div>
-<hr class="mt-5">
-<p class="text-end text-muted small">Última atualização: <?= date('d/m/Y') ?> • Desenvolvido com PHP</p>
 
 <!-- Script para copiar -->
 <script>

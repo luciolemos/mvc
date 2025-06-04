@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid px-3 px-md-4 py-4">
     <!-- 🧩 TÍTULO -->
     <div data-aos="fade-down">
         <h2 class="text-primary">
@@ -81,13 +81,13 @@
     </div>
 
     <!-- 🔗 Navegação -->
-    <div class="text-center mt-4" data-aos="fade-up">
-        <a href="<?= BASE_URL ?>docs/fluxomvc" class="btn btn-outline-primary me-2">
+<!--    <div class="text-center mt-4" data-aos="fade-up">
+        <a href="<?/*= BASE_URL */?>docs/fluxomvc" class="btn btn-outline-primary me-2">
             <i class="bi bi-arrow-left me-1"></i> Fluxo MVC
         </a>
-        <a href="<?= BASE_URL ?>docs/caracteristicas" class="btn btn-outline-secondary">
+        <a href="<?/*= BASE_URL */?>docs/caracteristicas" class="btn btn-outline-secondary">
             <i class="bi bi-list-check me-1"></i> Ver Características
         </a>
-    </div>
+    </div>-->
 
 </div>

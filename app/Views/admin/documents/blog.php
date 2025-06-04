@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid px-3 px-md-4 py-4">
     <!-- 🧭 TÍTULO PRINCIPAL -->
     <div data-aos="fade-down">
         <h2 class="text-primary"><i class="bi bi-journal-richtext me-2"></i> Documentação do Módulo de Blog</h2>
@@ -86,7 +86,4 @@ public function store() {
         <li>Slug automático com JavaScript</li>
         <li>Uploads de imagens com media manager</li>
     </ul>
-
-    <hr class="mt-5">
-    <p class="text-end text-muted small">Última atualização: <?= date('d/m/Y') ?> • Desenvolvido com PHP</p>
 </div>

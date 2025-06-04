@@ -43,48 +43,182 @@
             <pre id="estruturaProjeto" class="mb-0"><code>mvc/
 ├── app/
 │   ├── Controllers/
-│   │   ├── AboutController.php        # Página "Sobre"
-│   │   ├── AdminController.php        # Página "Admin"
-│   │   ├── BlogtController.php        # Página "Blog"
-│   │   ├── ContactController.php      # Contato + envio de email"
-│   │   ├── CoverageController.php     # Página "Coverage"
-│   │   ├── DocsController.php         # Páginas da documentação
-│   │   ├── HomeController.php         # Página "Home"
-│   │   ├── ReadmeController.php       # Página "Readme"
-│   │   └── StatusController.php       # Página "Status"
-│   ├── Core/
-│   │   ├── App.php                    # Núcleo roteador
-│   │   ├── Router.php                 # Interpreta a URL
-│   │   └── Controller.php             # Base dos controllers
-│   ├── Helpers/
-│   │   └── SystemVersions.php         # Helpers para versão do sistema
-│   ├── Models/
-│   │   ├── Post.php                   # Post
-│   │   └── User.php                   # (Opcional) Model de usuário
-│   └── Views/
-│       ├── home.php
-│       ├── about.php
-│       ├── contact.php
-│       ├── readme.php
-│       ├── layouts/
-│       │   ├── main.php               # Layout base
-│       │   ├── header.php             # Cabeçalho
-│       │   └── footer.php             # Rodapé
-│       ├── admin/
-│       │   ├── login.php
-│       │   └── dashboard.php
-│       └── docs/
-│           ├── estrutura.php
-│           ├── composer.php
-│           ├── virtualhost.php
-│           ├── fluxomvc.php
-│           ├── caracteristicas.php
-│           └── diagrama.php
+│   │   ├── Admin
+│   │   │   ├── AuthController.php
+│   │   │   ├── DashboardController.php
+│   │   │   ├── DocsController.php
+│   │   │   ├── EquipamentosController.php
+│   │   │   ├── FuncoesController.php
+│   │   │   ├── ObrasController.php
+│   │   │   ├── OpusController.php
+│   │   │   ├── PessoalController.php
+│   │   │   ├── PostsController.php
+│   │   │   ├── StatusController.php
+│   │   │   └── SystemController.php
+│   │   └── Site
+│   │       ├── AboutController.php
+│   │       ├── BlogController.php
+│   │       ├── ContactController.php
+│   │       ├── CoverageController.php
+│   │       ├── HomeController.php
+│   │       └── ReadmeController.php
+│   ├── Core
+│   │   ├── App.php
+│   │   ├── Controller.php
+│   │   ├── Database.php
+│   │   ├── Router.php
+│   │   └── View.php
+│   ├── Helpers
+│   │   ├── FormatHelper.php
+│   │   ├── RouteHelper.php
+│   │   └── SystemVersions.php
+│   ├── Models
+│   │   ├── EquipamentoModel.php
+│   │   ├── FuncaoModel.php
+│   │   ├── ObraModel.php
+│   │   ├── PessoalModel.php
+│   │   ├── Post.php
+│   │   └── User.php
+│   └── Views
+│       ├── 404.php
+│       ├── about.php
+│       ├── admin
+│       │   ├── dashboard.php
+│       │   ├── documents
+│       │   │   ├── blog.php
+│       │   │   ├── caracteristicas.php
+│       │   │   ├── composer.php
+│       │   │   ├── diagrama.php
+│       │   │   ├── elements.php
+│       │   │   ├── estrutura.php
+│       │   │   ├── fluxomvc.php
+│       │   │   ├── fluxopost.php
+│       │   │   ├── index.php
+│       │   │   ├── novofluxomvc.php
+│       │   │   └── virtualhost.php
+│       │   ├── equipamentos
+│       │   │   ├── _form.php
+│       │   │   ├── cadastrar.php
+│       │   │   ├── editar.php
+│       │   │   ├── index.php
+│       │   │   └── indice.php
+│       │   ├── ferramenta.php
+│       │   ├── funcoes
+│       │   │   ├── _form.php
+│       │   │   ├── cadastrar.php
+│       │   │   ├── editar.php
+│       │   │   └── index.php
+│       │   ├── login.php
+│       │   ├── obras
+│       │   │   ├── _form.php
+│       │   │   ├── cadastrar.php
+│       │   │   ├── editar.php
+│       │   │   └── index.php
+│       │   ├── opus
+│       │   │   ├── cad_cat_eqp.php
+│       │   │   ├── cad_eqp.php
+│       │   │   ├── cad_opus.php
+│       │   │   ├── cad_user.php
+│       │   │   ├── cadastrar_eqp.php
+│       │   │   ├── index.php
+│       │   │   ├── list_user.php
+│       │   │   ├── lista_cat_eqp.php
+│       │   │   ├── lista_eqp.php
+│       │   │   ├── obras_andamento.php
+│       │   │   ├── opus_manager.php
+│       │   │   ├── tools
+│       │   │   │   ├── cadastrar_cat_eqp.php
+│       │   │   │   ├── ferramentas.php
+│       │   │   │   ├── listar_cat_eqp.php
+│       │   │   │   └── listar_eqp.php
+│       │   │   └── user_manager.php
+│       │   ├── pessoal
+│       │   │   ├── _form.php
+│       │   │   ├── cadastrar.php
+│       │   │   ├── editar.php
+│       │   │   └── index.php
+│       │   ├── posts
+│       │   │   ├── create.php
+│       │   │   ├── edit.php
+│       │   │   └── index.php
+│       │   ├── status.php
+│       │   └── system
+│       │       ├── info.php
+│       │       └── versions.php
+│       ├── blog
+│       │   ├── index.php
+│       │   └── ver.php
+│       ├── blog.php
+│       ├── contact.php
+│       ├── coverage.php
+│       ├── dash.php
+│       ├── docs
+│       │   ├── blog.php
+│       │   ├── caracteristicas.php
+│       │   ├── composer.php
+│       │   ├── diagrama.php
+│       │   ├── estrutura.php
+│       │   ├── fluxomvc.php
+│       │   ├── fluxopost.php
+│       │   ├── novofluxomvc.php
+│       │   └── virtualhost.php
+│       ├── home.php
+│       ├── layouts
+│       │   ├── admin.php
+│       │   ├── admin_footer.php
+│       │   ├── admin_header.php
+│       │   ├── admin_sidebar.php
+│       │   ├── auth.php
+│       │   ├── footer.php
+│       │   ├── header.php
+│       │   ├── main.php
+│       │   └── old_admin_sidebar.php
+│       ├── post.php
+│       ├── posts.sql
+│       ├── readme.php
+│       └── templates
+│           └── main.php
 ├── config/
 │   └── config.php
 ├── public/
-│   ├── index.php                     # Front controller
-│   └── .htaccess                     # Reescrita de URL
+│   └── assets
+│       ├── css
+│       │   ├── about.css
+│       │   ├── admin.css
+│       │   ├── blog.css
+│       │   ├── contact.css
+│       │   ├── footer.css
+│       │   ├── header.css
+│       │   ├── home.css
+│       │   ├── main.css
+│       │   ├── nav.css
+│       │   ├── new_admin.css
+│       │   └── style.css
+│       ├── images
+│       │   ├── Full stack1.png
+│       │   ├── Full stack2.png
+│       │   ├── favicon
+│       │   │   ├── favicon-32x32-1.png
+│       │   │   ├── favicon-32x32-2.png
+│       │   │   ├── favicon-32x32-3.png
+│       │   │   ├── favicon-32x32-4.png
+│       │   │   ├── favicon-32x32-5.png
+│       │   │   ├── favicon-32x32.png
+│       │   │   └── php
+│       │   │       ├── Full stack1.png
+│       │   │       ├── android-chrome-192x192.png
+│       │   │       ├── android-chrome-512x512.png
+│       │   │       ├── favicon-16x16.png
+│       │   │       ├── favicon-32x32.png
+│       │   │       ├── favicon.ico
+│       │   │       └── site.webmanifest
+│       │   └── team
+│       │       ├── avatar1.png
+│       │       └── silhueta_150x200.png
+│       └── js
+│           ├── admin.js
+│           ├── main.min.js
+│           └── script.js
 ├── vendor/
 │   └── autoload.php                  # PSR-4 via Composer
 ├── composer.json

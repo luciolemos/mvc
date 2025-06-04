@@ -2,8 +2,6 @@
 
 namespace App\Core;
 
-use App\Core\Router;
-
 class App {
     protected $controller;
     protected $method = 'index';
@@ -11,42 +9,59 @@ class App {
 
     public function __construct() {
         $url = Router::parseUrl();
+
+        $this->resolveController($url);
+        $this->execute();
+    }
+
+    private function resolveController(array $url): void {
         $mainRoute = $url[0] ?? 'home';
 
-        // 🔐 Rota para ADMIN (Dashboard, Posts, Docs, etc.)
         if ($mainRoute === 'admin') {
-            $controllerName = ucfirst($url[1] ?? 'Dashboard') . 'Controller';
-            $controllerPath = "\\App\\Controllers\\Admin\\$controllerName";
-            $this->method = $url[2] ?? 'index';
-            $this->params = array_slice($url, 3);
-        }
+            array_shift($url); // remove 'admin'
 
-        // 🌐 Rota para SITE público (Home, Blog, Contact, etc.)
-        else {
-            $controllerName = ucfirst($mainRoute) . 'Controller';
-            $controllerPath = "\\App\\Controllers\\Site\\$controllerName";
-            $this->method = $url[1] ?? 'index';
-            $this->params = array_slice($url, 2);
-        }
+            $controllerPart = array_shift($url) ?? 'dashboard';
+            $this->method = $this->sanitizeMethod(array_shift($url) ?? 'index');
+            $this->params = array_map('htmlspecialchars', $url);
 
-        // ⚙️ Instancia o controller se existir
-        if (class_exists($controllerPath)) {
-            $this->controller = new $controllerPath();
+            $controllerClass = $this->buildControllerClass($controllerPart, 'Admin');
         } else {
-            return $this->notFound("Controller '$controllerPath' não encontrado.");
+            $controllerPart = $mainRoute;
+            $this->method = $this->sanitizeMethod($url[1] ?? 'index');
+            $this->params = array_slice($url, 2);
+
+            $controllerClass = "\\App\\Controllers\\Site\\" . ucfirst($controllerPart) . "Controller";
         }
 
-        // ⚠️ Verifica se o método existe
+        if (!class_exists($controllerClass)) {
+            $this->notFound("Controller não encontrado: $controllerClass");
+        }
+
+        $this->controller = new $controllerClass();
+
         if (!method_exists($this->controller, $this->method)) {
-            return $this->notFound("Método '{$this->method}' não encontrado em $controllerName.");
+            $this->notFound("Método '{$this->method}' não encontrado em $controllerClass");
         }
+    }
 
-        // 🚀 Executa a ação
+    private function buildControllerClass(string $path, string $area): string {
+        $segments = explode('/', $path);
+        $controller = ucfirst(array_pop($segments)) . 'Controller';
+        $namespace = implode('\\', array_map('ucfirst', $segments));
+
+        return "\\App\\Controllers\\{$area}" . ($namespace ? "\\{$namespace}" : '') . "\\{$controller}";
+    }
+
+    private function sanitizeMethod(string $method): string {
+        return preg_replace('/[^a-zA-Z0-9_]/', '', $method);
+    }
+
+    private function execute(): void {
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
 
-    private function notFound($msg = 'Página não encontrada') {
+    private function notFound(string $message): void {
         http_response_code(404);
-        die("❌ 404 - $msg");
+        die("❌ 404 - $message");
     }
 }

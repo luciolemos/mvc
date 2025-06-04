@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid px-3 px-md-4 py-4">
     <!-- TÍTULO PRINCIPAL -->
     <div data-aos="fade-down">
         <h2 class="text-primary">
@@ -126,8 +126,6 @@
         </ul>
     </div>
 </div>
-<hr class="mt-5">
-<p class="text-end text-muted small">Última atualização: <?= date('d/m/Y') ?> • Desenvolvido com PHP</p>
 
 <script>
     function copiarVirtualHost() {

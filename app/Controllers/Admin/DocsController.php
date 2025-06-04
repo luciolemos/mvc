@@ -45,4 +45,14 @@ class DocsController extends Controller
     public function elements() {
         $this->view('admin/documents/elements', [], 'admin');
     }
+
+    public function scripts() {
+        $this->view('admin/documents/scriptssql', [], 'admin');
+    }
+
+    public function index() {
+        // Redireciona para uma das páginas documentadas, ou mostra uma visão geral
+        $this->view('admin/documents/index', [], 'admin'); // Crie essa view
+    }
+
 }
